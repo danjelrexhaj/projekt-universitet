@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int main() {
+    int piket;
+    char nota;
+ /*Kemi deklaruar dy variabla ku duket qarte qe njera eshte shprehur si numer dhe tjetra si nje   karakter pra char(jo string si tekst) per arsye se vlersimi ne note do jete me shkronja A B C D dhe F */
+printf("Ju lutem vendosni piket e marra: ");
+scanf("%d",&piket);
+/*Kodin meposhtem e perdora vetem si kod shtese per te shfaqur nje mesazh nese numri eshte me i madhe se 100.*/
+if ( piket > 100 ) {
+   printf("Numri i pikeve nuk mund te jete me i madh se 100.\n");
+   return 1 ;
+}
+
+    switch( piket / 10)
+    /*Piket e marra pjestohen me dhjete dhe ngel vetem nje shifer keshtu perdorim menyren me case.*/
+    {
+        case 10:
+        case 9:
+           nota='A';
+           break;
+        case 8:
+           nota='B';
+           break;
+        case 7:
+           nota='c';
+           break;
+        case 6:
+           nota='D';
+           break;
+        case 5:
+           nota='F';
+           break;
+        default:
+           nota='F';
+    /* Per te mos bere cas 4 case 3 case 2 case 1 case 0 perdorim default*/
+    }
+printf("Nota juaj eshte:%c\n",nota);
+    /*Perdorim %c per te shfaqur noten sepse me char e kemi deklaruar sepse char perdoret per ta paraqitur variablen si nje karakter.*/
+    return 0;
+         }
+        
+        
+        
+        
+        
+        
