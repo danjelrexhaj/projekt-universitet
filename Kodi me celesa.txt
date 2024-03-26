@@ -1,0 +1,78 @@
+
+#include <stdio.h>
+#include <ctype.h>
+int main() {
+    char Fillo;
+    int Porta_A = 0;      
+    int Porta_B = 0;      
+    int Numeruesi = 0;           
+    int Porta_Dalese;      
+    int Piket = 0;       
+    int Numri_I_Hedhjeve;      
+    
+    printf("\n Ju lutemi vendosni numrin e hedhjeve: ");
+    scanf("%d", &Numri_I_Hedhjeve);
+    
+    if (Numri_I_Hedhjeve >= 0) {
+        printf("\nVendos se ne cilen porte do te hidhet ('A' ose 'B') per topin: ");
+        scanf(" %c", &Fillo);
+        Fillo = toupper(Fillo);
+        
+        int i = 0;
+        while (i < Numri_I_Hedhjeve) {
+            if (Fillo == 'A') {
+                if (Porta_A == 0) {
+                    Porta_Dalese = 0;
+                    Piket += Porta_Dalese;
+                   Porta_A = 1;
+                } else if (Porta_A == 1 && Porta_B == 0) {
+                    Porta_Dalese = 0;
+                   Piket += Porta_Dalese;
+                    Porta_A = 0;
+                    Numeruesi++;
+                    if (Numeruesi % 2 == 0) {
+                        Porta_B = 1;
+                    }
+                } else {
+                    Porta_Dalese = 1;
+                   Piket += Porta_Dalese;
+                    Porta_A = 0;
+                    Numeruesi++;
+                    if (Numeruesi % 2 == 0) {
+                        Porta_B = 0;
+                    }
+                }
+            } else if (Fillo == 'B') {
+                if (Porta_B == 1) {
+                    Porta_Dalese = 1;
+                    Piket += Porta_Dalese;
+                    Porta_B = 0;
+                } else if (Porta_B == 0 && Porta_A == 0) {
+                    Porta_Dalese = 0;
+                    Piket += Porta_Dalese;
+                    Porta_B = 1;
+                    Numeruesi++;
+                    if (Numeruesi % 2 == 0) {
+                       Porta_A = 1;
+                    }
+                } else {
+                    Porta_Dalese = 1;
+                    Piket += Porta_Dalese;
+                    Porta_B = 1;
+                    Numeruesi++;
+                    if (Numeruesi % 2 == 0) {
+                       Porta_A = 0;
+                    }
+                }
+            } else {
+                printf("\nPorta fillestare duhet te jete 'A' ose 'B'!\n");
+                return 0;
+            }
+            i++;
+        }
+        printf("\nPiket pas %d hedhjeve te njepasnjeshme ne porten fillestare %c jane: %d\n", Numri_I_Hedhjeve, Fillo, Piket);
+    } else {
+        printf("\nERROR(Nuk lejohen numrat negativ ne numrin e hedhjeve te topit)");
+    }
+    return 0;
+}
